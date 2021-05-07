@@ -13,6 +13,14 @@
 		90A527F0264526190030AB59 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90A527EF264526190030AB59 /* Preview Assets.xcassets */; };
 		90A527F2264526190030AB59 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A527F1264526190030AB59 /* Persistence.swift */; };
 		90A527F5264526190030AB59 /* UsersAndFriends.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 90A527F3264526190030AB59 /* UsersAndFriends.xcdatamodeld */; };
+		90A527FD264526A90030AB59 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A527FC264526A90030AB59 /* DataModel.swift */; };
+		90A527FF264535750030AB59 /* UserDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A527FE264535750030AB59 /* UserDetails.swift */; };
+		90A5281226454BA20030AB59 /* FriendCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A5280C26454BA20030AB59 /* FriendCD+CoreDataClass.swift */; };
+		90A5281326454BA20030AB59 /* FriendCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A5280D26454BA20030AB59 /* FriendCD+CoreDataProperties.swift */; };
+		90A5281426454BA20030AB59 /* TagCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A5280E26454BA20030AB59 /* TagCD+CoreDataClass.swift */; };
+		90A5281526454BA20030AB59 /* TagCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A5280F26454BA20030AB59 /* TagCD+CoreDataProperties.swift */; };
+		90A5281626454BA20030AB59 /* UserCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A5281026454BA20030AB59 /* UserCD+CoreDataClass.swift */; };
+		90A5281726454BA20030AB59 /* UserCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A5281126454BA20030AB59 /* UserCD+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +32,14 @@
 		90A527F1264526190030AB59 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		90A527F4264526190030AB59 /* UsersAndFriends.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UsersAndFriends.xcdatamodel; sourceTree = "<group>"; };
 		90A527F6264526190030AB59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		90A527FC264526A90030AB59 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		90A527FE264535750030AB59 /* UserDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetails.swift; sourceTree = "<group>"; };
+		90A5280C26454BA20030AB59 /* FriendCD+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FriendCD+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		90A5280D26454BA20030AB59 /* FriendCD+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FriendCD+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		90A5280E26454BA20030AB59 /* TagCD+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TagCD+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		90A5280F26454BA20030AB59 /* TagCD+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TagCD+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		90A5281026454BA20030AB59 /* UserCD+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserCD+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		90A5281126454BA20030AB59 /* UserCD+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserCD+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,10 +72,18 @@
 		90A527E7264526150030AB59 /* UsersAndFriends */ = {
 			isa = PBXGroup;
 			children = (
+				90A5280C26454BA20030AB59 /* FriendCD+CoreDataClass.swift */,
+				90A5280D26454BA20030AB59 /* FriendCD+CoreDataProperties.swift */,
+				90A5280E26454BA20030AB59 /* TagCD+CoreDataClass.swift */,
+				90A5280F26454BA20030AB59 /* TagCD+CoreDataProperties.swift */,
+				90A5281026454BA20030AB59 /* UserCD+CoreDataClass.swift */,
+				90A5281126454BA20030AB59 /* UserCD+CoreDataProperties.swift */,
 				90A527E8264526150030AB59 /* UsersAndFriendsApp.swift */,
 				90A527EA264526150030AB59 /* ContentView.swift */,
+				90A527FE264535750030AB59 /* UserDetails.swift */,
 				90A527EC264526190030AB59 /* Assets.xcassets */,
 				90A527F1264526190030AB59 /* Persistence.swift */,
+				90A527FC264526A90030AB59 /* DataModel.swift */,
 				90A527F6264526190030AB59 /* Info.plist */,
 				90A527F3264526190030AB59 /* UsersAndFriends.xcdatamodeld */,
 				90A527EE264526190030AB59 /* Preview Content */,
@@ -144,10 +168,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90A527FD264526A90030AB59 /* DataModel.swift in Sources */,
+				90A5281426454BA20030AB59 /* TagCD+CoreDataClass.swift in Sources */,
 				90A527F5264526190030AB59 /* UsersAndFriends.xcdatamodeld in Sources */,
+				90A5281326454BA20030AB59 /* FriendCD+CoreDataProperties.swift in Sources */,
 				90A527F2264526190030AB59 /* Persistence.swift in Sources */,
+				90A5281226454BA20030AB59 /* FriendCD+CoreDataClass.swift in Sources */,
 				90A527EB264526150030AB59 /* ContentView.swift in Sources */,
+				90A5281726454BA20030AB59 /* UserCD+CoreDataProperties.swift in Sources */,
+				90A5281526454BA20030AB59 /* TagCD+CoreDataProperties.swift in Sources */,
 				90A527E9264526150030AB59 /* UsersAndFriendsApp.swift in Sources */,
+				90A527FF264535750030AB59 /* UserDetails.swift in Sources */,
+				90A5281626454BA20030AB59 /* UserCD+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

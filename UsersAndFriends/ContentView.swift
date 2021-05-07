@@ -8,6 +8,74 @@
 import SwiftUI
 import CoreData
 
+extension ContentView {
+    func loadData() {
+        print("Antal users i Core Data: \(userCD.count)")
+        if userCD.count == 0 {
+            print("No data in Core Data")
+            guard let url = URL(string: "https://www.hackingwithswift.com/samples/friendface.json") else {
+                print("Invalid URL")
+                return
+            }
+            
+            let request = URLRequest(url: url)
+            
+            URLSession.shared.dataTask(with: request) { data, response, error in
+                if let data = data {
+                    if let decodedUsers = try? JSONDecoder().decode([User].self, from: data) {
+                        DispatchQueue.main.async {
+                            self.userList.users = decodedUsers
+                            saveData()
+                        }
+                        return
+                    }
+                }
+                
+                print("Fetch failed: \(error?.localizedDescription ?? "Unknown error")")
+            }.resume()
+        } else {
+            print("Load data from Core Data")
+            for user in userCD {
+                self.userList.users.append(User(id: user.id!, isActive: user.isActive, name: user.name ?? "Unknown", age: Int(user.age), company: user.company ?? "", email: user.email ?? "", address: user.address ?? "", about: user.about ?? "", registered: user.registered ?? "", tags: user.tagsArray, friends: user.friendsArray))
+            }
+        }
+    }
+    
+    func saveData() {
+        print("Save data in Core Data")
+        for user in self.userList.users {
+            let userCD = UserCD(context: viewContext)
+            userCD.id = user.id
+            userCD.isActive = user.isActive
+            userCD.name = user.name
+            userCD.age = Int16(user.age)
+            userCD.company = user.company
+            userCD.email = user.email
+            userCD.address = user.address
+            userCD.about = user.about
+            userCD.registered = user.registered
+
+            for tag in user.tags {
+                let tagCD = TagCD(context: viewContext)
+                tagCD.tagName = tag
+                userCD.addToTags(tagCD)
+            }
+            
+            for friend in user.friends {
+                let friendCD = FriendCD(context: viewContext)
+                friendCD.id = friend.id
+                friendCD.name = friend.name
+                userCD.addToFriends(friendCD)
+            }
+        }
+
+        print("Ready to save")
+        try? self.viewContext.save()
+        print("Data saved in Core Data")
+    }
+}
+
+
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
@@ -15,9 +83,31 @@ struct ContentView: View {
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
         animation: .default)
     private var items: FetchedResults<Item>
+    
+    @FetchRequest(entity: UserCD.entity(), sortDescriptors: []) var userCD: FetchedResults<UserCD>
 
+    @ObservedObject var userList = Users()
+    
     var body: some View {
-        List {
+        NavigationView {
+            List {
+                ForEach(userList.users, id: \.id) { user in
+                    NavigationLink(destination: UserDetails(user: user, userList: userList)) {
+                        VStack(alignment: .leading) {
+                            Text(user.name)
+                                .font(.headline)
+                            Text(user.email)
+                                .font(.footnote)
+                        }
+                        .foregroundColor(user.isActive ? .primary : .gray)
+                    }
+                }
+            }
+            .navigationBarTitle("Users & Friends")
+        }
+        .onAppear(perform: loadData)
+        
+/*        List {
             ForEach(items) { item in
                 Text("Item at \(item.timestamp!, formatter: itemFormatter)")
             }
@@ -31,7 +121,7 @@ struct ContentView: View {
             Button(action: addItem) {
                 Label("Add Item", systemImage: "plus")
             }
-        }
+        } */
     }
 
     private func addItem() {
@@ -73,8 +163,11 @@ private let itemFormatter: DateFormatter = {
     return formatter
 }()
 
+/*
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
+*/
+
